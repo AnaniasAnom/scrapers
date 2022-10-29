@@ -71,8 +71,8 @@ class CbParser(HTMLParser):
             self.viewer_count += viewers
         else:
             self.viewer_errs += 1
-        print(f"{self.inroom['name']}: {viewers}")
         self.room_count += 1
+        print(f"{self.room_count}\t{self.inroom['name']}\t{viewers}")
         self.inroom = None
         
 parser = CbParser()
@@ -88,12 +88,9 @@ while (url):
     if (parser.next_page):
         url = urllib.parse.urljoin(url, parser.next_page)
         parser.next_page = None
+        sys.stdout.flush()
         time.sleep(5)
     else:
         url = None
-
-    print(f"Next: {url}")
-    sys.stdout.flush()
-    
     
 print(f"Totals: {parser.room_count} rooms, {parser.viewer_count} viewers")

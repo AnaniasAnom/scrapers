@@ -3,18 +3,10 @@ import urllib.request as urllib2
 import sys
 import sqlite3
 
-# from firefox, save the page with thumbnails as "cshive.com" in the screenshots directory
-# cd screenshots/whoever
-# python ~/devel/scrapers/hive-extract.py cshive.com
-# mv cshive_files hive
-# cd hive
-# bash ~/devel/scrapers/tag-hive-thumbs.sh
-# rm *.svg *.js *.css *_original
+# This creates a sqlite3 db of photo ids and timestamps from a
+# cshive page saved from a browser
 
-
-
-
-class MyHTMLParser(HTMLParser):
+class HiveParser(HTMLParser):
 
     def __init__(self, connection):
         self.db = connection
@@ -57,13 +49,9 @@ db = sqlite3.connect('hivedata.db')
 
 initdb(db)
 
-#creating an object of the overridden class
-parser = MyHTMLParser(db)
+parser = HiveParser(db)
 
 html_page = open(sys.argv[1],"r")
-
-#Feeding the content
 content = str(html_page.readlines())
-
 parser.feed(content)
     

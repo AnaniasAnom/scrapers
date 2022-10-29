@@ -1,0 +1,8 @@
+
+# from firefox, save the page with thumbnails as "cshive.com" in the screenshots directory
+# cd screenshots/whoever
+# python ~/devel/scrapers/hive-extract.py cshive.com
+# mv cshive_files hive
+# cd hive
+# bash ~/devel/scrapers/tag-hive-thumbs.sh
+# rm *.svg *.js *.css *_original
