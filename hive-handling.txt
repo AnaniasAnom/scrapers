@@ -4,5 +4,5 @@
 # python ~/devel/scrapers/hive-extract.py cshive.com
 # mv cshive_files hive
 # cd hive
-# bash ~/devel/scrapers/tag-hive-thumbs.sh
+# bash ~/devel/scrapers/tag-hive-thumbs.sh ../hivedata.db 12345678
 # rm *.svg *.js *.css *_original
